@@ -10,6 +10,7 @@ import EditOrganiser from "./pages/EditOrganiser"
 import FormComponent from "./pages/HostHackathonPage"
 import ParticipationFormComponent from "./pages/ParticipateHackathon"
 import AllHackathons from "./pages/AllHackathons"
+import Registerparticipant from "./components/Registerparticipant"
 
 function App() {
 
@@ -27,11 +28,14 @@ function App() {
        <Route path="/participate-hackathon" Component={ParticipationFormComponent} />
        <Route path="/all-hackathons" Component={AllHackathons} />
        <Route path="/hackathon-detail/:hackathonId" element={<HackathonDetails/>} />
+
+       {/* <Route path="/participant-login" element={<Registerparticipant/>} />/ */}
        {/* <Route path="/hackathon-detail/:hackathonId" element={<HackathonDetails/>} /> */}
   
 
       
      </Routes>
+     {/* <Footer/> */}
   
     </>
   )

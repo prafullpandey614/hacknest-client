@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const FormComponent = () => {
     
@@ -94,6 +95,7 @@ const FormComponent = () => {
         </button>
       </div>
     </div>
+    <Footer/>
     </>
   );
 };

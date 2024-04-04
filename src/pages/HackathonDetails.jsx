@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 import Reviews from '../components/Reviews';
 import Description from '../components/Description';
 import Details from '../components/Details';
+import Footer from '../components/Footer';
 const HackathonDetails =  (props) => {
     const [hackathon, setHackathon] = useState({})
     const [review, setReview] = useState(false)
@@ -117,6 +118,7 @@ let handleDetails = () => {
     </div>
   </div>
 </section>
+<Footer/>
 
     </>
   )

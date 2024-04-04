@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const About = () => {
   return (
@@ -23,6 +24,7 @@ const About = () => {
         Thank you for joining us on this journey. Together, let's empower the innovators of tomorrow!
       </p>
     </div>
+    <Footer/>
     </>
   );
 };

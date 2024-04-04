@@ -4,10 +4,15 @@ import Modal from "../components/Modal";
 import RegisterOrganizer from "../components/RegisterOrganizer";
 import About from "./About";
 import LoginOrganiser from "../components/LoginOrganiser";
+import Registerparticipant from "../components/Registerparticipant";
+import Footer from "../components/Footer";
 
 const Authentication = () => {
   const [signin, setSignin] = useState(true);
   const [isloggedin, setIsloggedin] = useState(false);
+
+  const [isparticipant, setIsparticipant] = useState(false)
+  
   const [showModal, setShowModal] = useState(true);
   const [currPage, setCurrPage] = useState("Sign Up")
   const [isUserOrganiser, setIsUserOrganiser] = useState(false);
@@ -22,9 +27,13 @@ const Authentication = () => {
     setShowModal(false);
     setIsUserOrganiser(true);
   };
-  const closeModalParticipant = () => {
+  const closeModalParticipant = async () => {
     setShowModal(false);
     setIsUserOrganiser(false);
+    let res =  setIsparticipant(true);
+    console.log(isparticipant)
+
+    console.log(res)
   };
   return (
     <>
@@ -72,12 +81,16 @@ const Authentication = () => {
               {isUserOrganiser && <>
               {currPage=="Sign Up" && <RegisterOrganizer loginpage={showLoginPage} />}
               
+             
+
               {currPage=="Sign In" && <LoginOrganiser signuppage={showSignupPage}/>}
-              {/* <RegisterOrganizer loginpage={showSignupPage} /> */}
+            
               </>}
-              
+
+              {isparticipant && <> <Registerparticipant/> </>}
             </div>
           </section>
+          <Footer/>
         </>
       )}
     </>

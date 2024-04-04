@@ -5,6 +5,7 @@ import axios from "axios";
 import SidePanel from "../components/SidePanel";
 import Navbar from "../components/Navbar";
 import {Link} from 'react-router-dom'
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
   const [organiser, setOrganiser] = useState({});
@@ -169,6 +170,7 @@ const Dashboard = () => {
     </div>
   </div>
 </section>
+<Footer/>
 
         
         </>

@@ -2,6 +2,7 @@ import {React,useEffect,useState} from 'react'
 import Navbar from "../components/Navbar"
 
 import axios from "axios"
+import Footer from '../components/Footer';
 
 const EditOrganiser = () => {
    const [name, setName] = useState('');
@@ -159,6 +160,7 @@ const EditOrganiser = () => {
     </div>
   </div>
 </section>
+<Footer/>
 
     </>
   )
