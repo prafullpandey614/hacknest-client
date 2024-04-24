@@ -1,28 +1,32 @@
-/* eslint-disable no-unused-vars */
-import {React,useState} from 'react';
+// eslint-disable-next-line no-unused-vars
+import {React,useState} from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { login } from '../reducers';
 
-const RegisterOrganizer = (props) => {
+const RegisterParticipant = (props) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [badrequest, setBadrequest] = useState(false)
     const navigate = useNavigate();
-
+    const dispatch = useDispatch();
     // const history = useHistory();
     
     const handleUsername = (e) => setUsername(e.target.value) ;
     const handleEmail = (e) => setEmail(e.target.value) ;
     const handlePassword = (e) => setPassword(e.target.value) ;
+    const handleLogin = (payload) => {
+      dispatch(login(payload));
+    };
+  
 
     const handleSignUp = async() => {
         localStorage.setItem('username', username);
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
-        // console.log(username);
-        // console.log(email);
-        // console.log(password);
+
         const payload = {
             "username" : username,
             "email": email,
@@ -30,11 +34,20 @@ const RegisterOrganizer = (props) => {
         }
         try {
             let result = await axios.post("http://127.0.0.1:8000/registerV2/", payload);
+
             localStorage.setItem('accessToken', result.data["access"]);
             localStorage.setItem('refreshToken', result.data["refresh"]);
-            // Redirect to a different page after signing up
-            // history.push('/dashboard'); // Replace '/dashboard' with the route you want to redirect to
-            navigate('/dashboard')
+            console.log(email)
+           
+            handleLogin({
+              userType: "participant",
+              username: username ,
+              token: "eour9r9934jtt",
+              email: email,
+            });
+
+            
+            navigate('/participant-dashboard')
           } catch (error) {
             console.error("Error signing up:", error);
             setBadrequest(true);
@@ -47,7 +60,7 @@ const RegisterOrganizer = (props) => {
     <div className="lg:w-2/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
 
                 {!badrequest && <h2 className="text-white text-lg font-medium title-font mb-5">
-                  Signup as a Hackathon Organizer
+                  Signup as a Participant 
                 </h2>}
                 {badrequest && <h2 className="text-white text-lg font-medium title-font mb-5">
                   Something Went Wrong ! Try a different username or email
@@ -112,4 +125,4 @@ const RegisterOrganizer = (props) => {
   )
 }
 
-export default RegisterOrganizer
+export default RegisterParticipant

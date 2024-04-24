@@ -10,6 +10,7 @@ import EditOrganiser from "./pages/EditOrganiser"
 import FormComponent from "./pages/HostHackathonPage"
 import ParticipationFormComponent from "./pages/ParticipateHackathon"
 import AllHackathons from "./pages/AllHackathons"
+import ParticipantDashboard from "./pages/ParticipantDashboard"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
        <Route path="/contacts" Component={Contact} />
        <Route path="/about" Component={About} />
        <Route path="/auth" Component={Authentication} />
+       <Route path="/participant-dashboard" Component={ParticipantDashboard} />
        <Route path="/dashboard" Component={Dashboard} />
        <Route path="/edit-organisation" Component={EditOrganiser} />
        <Route path="/host-hackathon" Component={FormComponent} />

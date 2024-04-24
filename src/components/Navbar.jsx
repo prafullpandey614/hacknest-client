@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { Link } from 'react-router-dom'
 import TransparentLogo from './TransparentLogo'
@@ -21,9 +23,11 @@ const Navbar = (props) => {
       <Link className="mr-5 hover:text-white" to="/all-hackathons">Hackathons</Link>
       <Link className="mr-5 hover:text-white" to="/contacts"></Link>
     </nav>
-    <Link to="/auth" className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
-      {props.auth && <>Login</>}
-      {!props.auth && <>Take Me In</>}
+    <Link onChange={props.authChange} to={props.auth ? "/auth" : "/participant-dashboard"}   className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+      
+      {props.auth && <>Logout</>}
+
+      {!props.auth &&  <> Take Me In </>}
       
       <svg
         fill="none"

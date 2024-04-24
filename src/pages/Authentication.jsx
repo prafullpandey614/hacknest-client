@@ -1,16 +1,21 @@
+/* eslint-disable no-unused-vars */
 import { React, useState ,createContext, useContext} from "react";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import RegisterOrganizer from "../components/RegisterOrganizer";
 import About from "./About";
 import LoginOrganiser from "../components/LoginOrganiser";
+import RegisterParticipant from "../components/RegisterParticipant";
+import LoginParticipant from "../components/LoginParticipant";
 
 const Authentication = () => {
   const [signin, setSignin] = useState(true);
   const [isloggedin, setIsloggedin] = useState(false);
   const [showModal, setShowModal] = useState(true);
-  const [currPage, setCurrPage] = useState("Sign Up")
+  const [isParticipant, setIsParticipant] = useState(false)
+  const [currPage, setCurrPage] = useState("Sign Up") 
   const [isUserOrganiser, setIsUserOrganiser] = useState(false);
+  const [userOrganiser, setUserOrganiser] = useState(false);
   const openModal = () => setShowModal(true);
   const showLoginPage = () => {
     setCurrPage("Sign In")
@@ -25,10 +30,20 @@ const Authentication = () => {
   const closeModalParticipant = () => {
     setShowModal(false);
     setIsUserOrganiser(false);
+    setIsParticipant(true);
   };
+
+  const pageChanging=()=>{
+setUserOrganiser(!userOrganiser)
+ // Clear local storage
+ localStorage.clear();
+ // Update state to reflect logged out status
+ setIsloggedin(false);
+ // Other necessary state updates
+  }
   return (
     <>
-      <Navbar menu={true} auth={true} currState={currPage}/>
+      <Navbar menu={true} authChange={pageChanging} auth={userOrganiser}  currState={currPage}/>
 
       {signin && (
         <>
@@ -73,8 +88,11 @@ const Authentication = () => {
               {currPage=="Sign Up" && <RegisterOrganizer loginpage={showLoginPage} />}
               
               {currPage=="Sign In" && <LoginOrganiser signuppage={showSignupPage}/>}
-              {/* <RegisterOrganizer loginpage={showSignupPage} /> */}
+            
               </>}
+              
+              {currPage=="Sign Up" && isParticipant && <RegisterParticipant loginpage={showLoginPage}/>}
+              {currPage=="Sign In" && isParticipant && <LoginParticipant signuppage={showSignupPage}/>}
               
             </div>
           </section>
