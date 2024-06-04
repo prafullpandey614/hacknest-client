@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import {React,useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from "axios";
@@ -24,7 +26,8 @@ const LoginParticipant = (props) => {
         console.log(result.status)
         localStorage.setItem("accessToken",result.data["access"])
         localStorage.setItem("refreshToken",result.data["refresh"])
-
+        props.setIsAuthenticated(true)
+        console.log(props)
         navigate('/participant-dashboard')
     }
   return (

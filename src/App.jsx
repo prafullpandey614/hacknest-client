@@ -11,6 +11,9 @@ import FormComponent from "./pages/HostHackathonPage"
 import ParticipationFormComponent from "./pages/ParticipateHackathon"
 import AllHackathons from "./pages/AllHackathons"
 import ParticipantDashboard from "./pages/ParticipantDashboard"
+import MyHackathonsOrganiser from "./pages/MyHackathonsOrganiser"
+import FileUploader from "./pages/Utils"
+import MainDashBoardPage from "./pages/OraganiserDashboardEval"
 
 function App() {
 
@@ -29,6 +32,9 @@ function App() {
        <Route path="/participate-hackathon" Component={ParticipationFormComponent} />
        <Route path="/all-hackathons" Component={AllHackathons} />
        <Route path="/hackathon-detail/:hackathonId" element={<HackathonDetails/>} />
+       <Route path="/my-hosted-hackathons" element={<MyHackathonsOrganiser/>} />
+       <Route path="/org-dashboard" element={<MainDashBoardPage/>} />
+       <Route path="/utils" element={<FileUploader/>} />
        {/* <Route path="/hackathon-detail/:hackathonId" element={<HackathonDetails/>} /> */}
   
 

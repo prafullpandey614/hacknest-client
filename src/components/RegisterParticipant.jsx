@@ -46,7 +46,7 @@ const RegisterParticipant = (props) => {
               email: email,
             });
 
-            
+            props.setIsAuthenticated(true)
             navigate('/participant-dashboard')
           } catch (error) {
             console.error("Error signing up:", error);

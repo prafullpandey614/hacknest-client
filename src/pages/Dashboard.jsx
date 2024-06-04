@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { React, useState , useEffect} from "react";
 import Modal from "../components/Modal";
 // import Navbar from "../components/Navbar";
@@ -83,7 +85,7 @@ const Dashboard = () => {
         </h2>
         <div className="relative mb-4 px-8">
           <label htmlFor="full-name" className="leading-7 text-sm text-black">
-            Organisation's Name
+            Organisation Name
           </label>
           <input
             type="text"

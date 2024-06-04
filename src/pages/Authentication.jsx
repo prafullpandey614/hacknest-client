@@ -16,6 +16,7 @@ const Authentication = () => {
   const [currPage, setCurrPage] = useState("Sign Up") 
   const [isUserOrganiser, setIsUserOrganiser] = useState(false);
   const [userOrganiser, setUserOrganiser] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const openModal = () => setShowModal(true);
   const showLoginPage = () => {
     setCurrPage("Sign In")
@@ -43,7 +44,7 @@ setUserOrganiser(!userOrganiser)
   }
   return (
     <>
-      <Navbar menu={true} authChange={pageChanging} auth={userOrganiser}  currState={currPage}/>
+      <Navbar menu={true} authChange={pageChanging} auth={isAuthenticated}  currState={currPage}/>
 
       {signin && (
         <>
@@ -91,8 +92,8 @@ setUserOrganiser(!userOrganiser)
             
               </>}
               
-              {currPage=="Sign Up" && isParticipant && <RegisterParticipant loginpage={showLoginPage}/>}
-              {currPage=="Sign In" && isParticipant && <LoginParticipant signuppage={showSignupPage}/>}
+              {currPage=="Sign Up" && isParticipant && <RegisterParticipant loginpage={showLoginPage} setIsAuthenticated = {setIsAuthenticated}/>}
+              {currPage=="Sign In" && isParticipant && <LoginParticipant signuppage={showSignupPage} setIsAuthenticated = {setIsAuthenticated}/>}
               
             </div>
           </section>
